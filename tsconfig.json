@@ -39,15 +39,16 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
+    "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mjs",
-    "jest.config.js",
     ".next/types/**/*.ts",
-    "eslint.config.mjs"
+    "eslint.config.mjs",
+    "jest.config.js",
+    "next-env.d.ts",
+    "dist/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }
