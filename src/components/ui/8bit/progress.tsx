@@ -1,6 +1,6 @@
-import { Press_Start_2P } from "next/font/google"
 import * as ProgressPrimitive from "@radix-ui/react-progress"
-import { cva, VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Press_Start_2P } from "next/font/google"
 
 import { cn } from "@/lib/utils"
 
@@ -27,7 +27,7 @@ export const progressVariants = cva("", {
 
 export interface BitProgressProps
   extends React.ComponentProps<typeof ProgressPrimitive.Root>,
-    VariantProps<typeof progressVariants> {
+  VariantProps<typeof progressVariants> {
   className?: string
   font?: VariantProps<typeof progressVariants>["font"]
 }
