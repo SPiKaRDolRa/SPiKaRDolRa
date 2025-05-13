@@ -4,7 +4,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         {/* Layout UI */}
         {/* Place children where you want to render a page or nested layout */}
