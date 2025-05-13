@@ -1,7 +1,9 @@
 import { Press_Start_2P } from "next/font/google"
-import { cva, VariantProps } from "class-variance-authority"
+
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+
 import {
   Card as ShadcnCard,
   CardAction as ShadcnCardAction,
@@ -29,9 +31,7 @@ export const cardVariants = cva("", {
   },
 })
 
-export interface BitCardProps
-  extends React.ComponentProps<"div">,
-    VariantProps<typeof cardVariants> {
+export interface BitCardProps extends React.ComponentProps<"div">, VariantProps<typeof cardVariants> {
   asChild?: boolean
 }
 
@@ -39,19 +39,10 @@ function Card({ ...props }: BitCardProps) {
   const { className, font } = props
 
   return (
-    <div
-      className={cn(
-        "relative border-y-6 border-foreground dark:border-ring !p-0",
-        className
-      )}
-    >
+    <div className={cn("relative border-y-6 border-foreground dark:border-ring !p-0", className)}>
       <ShadcnCard
         {...props}
-        className={cn(
-          "rounded-none border-0 !w-full",
-          font !== "normal" && pressStart.className,
-          className
-        )}
+        className={cn("rounded-none border-0 size-full", font !== "normal" && pressStart.className, className)}
       />
 
       <div
@@ -65,56 +56,31 @@ function Card({ ...props }: BitCardProps) {
 function CardHeader({ ...props }: BitCardProps) {
   const { className, font } = props
 
-  return (
-    <ShadcnCardHeader
-      className={cn(font !== "normal" && pressStart.className, className)}
-      {...props}
-    />
-  )
+  return <ShadcnCardHeader className={cn(font !== "normal" && pressStart.className, className)} {...props} />
 }
 
 function CardTitle({ ...props }: BitCardProps) {
   const { className, font } = props
 
-  return (
-    <ShadcnCardTitle
-      className={cn(font !== "normal" && pressStart.className, className)}
-      {...props}
-    />
-  )
+  return <ShadcnCardTitle className={cn(font !== "normal" && pressStart.className, className)} {...props} />
 }
 
 function CardDescription({ ...props }: BitCardProps) {
   const { className, font } = props
 
-  return (
-    <ShadcnCardDescription
-      className={cn(font !== "normal" && pressStart.className, className)}
-      {...props}
-    />
-  )
+  return <ShadcnCardDescription className={cn(font !== "normal" && pressStart.className, className)} {...props} />
 }
 
 function CardAction({ ...props }: BitCardProps) {
   const { className, font } = props
 
-  return (
-    <ShadcnCardAction
-      className={cn(font !== "normal" && pressStart.className, className)}
-      {...props}
-    />
-  )
+  return <ShadcnCardAction className={cn(font !== "normal" && pressStart.className, className)} {...props} />
 }
 
 function CardContent({ ...props }: BitCardProps) {
   const { className, font } = props
 
-  return (
-    <ShadcnCardContent
-      className={cn(font !== "normal" && pressStart.className, className)}
-      {...props}
-    />
-  )
+  return <ShadcnCardContent className={cn(font !== "normal" && pressStart.className, className)} {...props} />
 }
 
 function CardFooter({ ...props }: BitCardProps) {
@@ -129,12 +95,4 @@ function CardFooter({ ...props }: BitCardProps) {
   )
 }
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-}
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
