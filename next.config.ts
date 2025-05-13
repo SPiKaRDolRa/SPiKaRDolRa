@@ -10,11 +10,9 @@ const config: NextConfig = {
       fullUrl: true,
     },
   },
-  // การเปลี่ยนโฟลเดอร์ root ใน Next.js 15
-  distDir: 'dist', // ถ้าต้องการเปลี่ยน build output directory
 
   // กำหนด path pattern สำหรับไฟล์ที่ย้ายไปอยู่ใน src
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx', 'md'],
+  pageExtensions: ["tsx", "ts", "jsx", "js", "mdx", "md"],
 
   rewrites: async () => [
     { source: "/healthz", destination: "/api/health" },

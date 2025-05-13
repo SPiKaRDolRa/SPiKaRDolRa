@@ -1,13 +1,24 @@
 "use client"
 
-import * as React from "react"
 import Link from "next/link"
-import { BellIcon, CheckIcon, ChevronsUpDown, Crown, GithubIcon, Mail, Plus } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { GithubIcon, Plus } from "lucide-react"
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/8bit/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/8bit/alert"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/8bit/avatar"
 import { Badge } from "@/components/ui/8bit/badge"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/8bit/breadcrumb"
 import { Button } from "@/components/ui/8bit/button"
+// import { AppSidebar } from "@/components/ui/8bit/blocks/sidebar"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/8bit/card"
 import { Checkbox } from "@/components/ui/8bit/checkbox"
 import {
   Dialog,
@@ -26,11 +37,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/8bit/dropdown-menu"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/8bit/hover-card"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/8bit/hover-card"
 import { Input } from "@/components/ui/8bit/input"
 import { Label } from "@/components/ui/8bit/label"
 import {
@@ -42,27 +49,12 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/8bit/pagination"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/8bit/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/8bit/popover"
 import { Progress } from "@/components/ui/8bit/progress"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/8bit/radio-group"
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/8bit/resizable"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/8bit/resizable"
 import { ScrollArea } from "@/components/ui/8bit/scroll-area"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/8bit/select"
-import { Separator } from "@/components/ui/separator"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/8bit/select"
 import {
   Sheet,
   SheetContent,
@@ -73,54 +65,24 @@ import {
 } from "@/components/ui/8bit/sheet"
 import { Skeleton } from "@/components/ui/8bit/skeleton"
 import { Switch } from "@/components/ui/8bit/switch"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/8bit/table"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/8bit/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/8bit/tabs"
 import { Textarea } from "@/components/ui/8bit/textarea"
 import { Toggle } from "@/components/ui/8bit/toggle"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/8bit/tooltip"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/8bit/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/8bit/alert"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/8bit/breadcrumb"
-import { AppSidebar } from "@/components/ui/8bit/blocks/sidebar"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/8bit/tooltip"
+import { Separator } from "@/components/ui/separator"
 
 export default function EightBitShadcnShowcase() {
   return (
-    <div className="container p-6 space-y-12 mb-20">
+    <div className="container mb-20 space-y-12 p-6">
       <div className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">8-Bit Shadcn/UI Components</h1>
         <p className="text-muted-foreground text-lg">
           A showcase of all the 8-bit themed Shadcn/UI components available in this project.
         </p>
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-4">
           <Button>
-            <Link href="/show-case/native-shadcn">
-              Switch to Original Components
-            </Link>
+            <Link href="/show-case/native-shadcn">Switch to Original Components</Link>
           </Button>
         </div>
       </div>
@@ -130,7 +92,7 @@ export default function EightBitShadcnShowcase() {
       {/* Input Components */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tight">Input Components</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Button */}
           <Card>
             <CardHeader>
@@ -147,7 +109,9 @@ export default function EightBitShadcnShowcase() {
               <Button size="sm">Small</Button>
               <Button size="lg">Large</Button>
               <Button disabled>Disabled</Button>
-              <Button size="icon"><Plus className="h-4 w-4" /></Button>
+              <Button size="icon">
+                <Plus className="h-4 w-4" />
+              </Button>
             </CardContent>
           </Card>
 
@@ -160,7 +124,7 @@ export default function EightBitShadcnShowcase() {
             <CardContent className="space-y-4">
               <Input placeholder="Default input" />
               <Input placeholder="Disabled input" disabled />
-              <div className="flex gap-2">
+              <div className="flex items-center gap-4">
                 <Input placeholder="With button" />
                 <Button>Submit</Button>
               </div>
@@ -184,7 +148,9 @@ export default function EightBitShadcnShowcase() {
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox id="terms3" disabled />
-                <Label htmlFor="terms3" className="text-muted-foreground">Disabled</Label>
+                <Label htmlFor="terms3" className="text-muted-foreground">
+                  Disabled
+                </Label>
               </div>
             </CardContent>
           </Card>
@@ -197,17 +163,19 @@ export default function EightBitShadcnShowcase() {
             </CardHeader>
             <CardContent>
               <RadioGroup defaultValue="option-one">
-                <div className="flex items-center space-x-2 mb-2">
+                <div className="mb-2 flex items-center space-x-2">
                   <RadioGroupItem value="option-one" id="option-one" />
                   <Label htmlFor="option-one">Option One</Label>
                 </div>
-                <div className="flex items-center space-x-2 mb-2">
+                <div className="mb-2 flex items-center space-x-2">
                   <RadioGroupItem value="option-two" id="option-two" />
                   <Label htmlFor="option-two">Option Two</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option-three" id="option-three" disabled />
-                  <Label htmlFor="option-three" className="text-muted-foreground">Disabled</Label>
+                  <Label htmlFor="option-three" className="text-muted-foreground">
+                    Disabled
+                  </Label>
                 </div>
               </RadioGroup>
             </CardContent>
@@ -243,16 +211,15 @@ export default function EightBitShadcnShowcase() {
           </Card>
 
           {/* Textarea */}
-          {/* <Card>
+          <Card>
             <CardHeader>
               <CardTitle>Textarea</CardTitle>
               <CardDescription>8-bit styled multi-line text input control.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Textarea placeholder="Type your message here." />
-              <Textarea placeholder="Disabled" disabled />
+              <Textarea />
             </CardContent>
-          </Card> */}
+          </Card>
 
           {/* Switch */}
           <Card>
@@ -271,24 +238,26 @@ export default function EightBitShadcnShowcase() {
               </div>
               <div className="flex items-center space-x-2">
                 <Switch id="disabled" disabled />
-                <Label htmlFor="disabled" className="text-muted-foreground">Disabled</Label>
+                <Label htmlFor="disabled" className="text-muted-foreground">
+                  Disabled
+                </Label>
               </div>
             </CardContent>
           </Card>
 
           {/* Toggle */}
-          <Card>
+          <Card className="col-span-1 md:col-span-2">
             <CardHeader>
               <CardTitle>Toggle</CardTitle>
               <CardDescription>8-bit styled two-state button control.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex gap-2">
+              <div className="flex gap-4">
                 <Toggle>Default</Toggle>
                 <Toggle variant="outline">Outline</Toggle>
                 <Toggle defaultPressed>Pressed</Toggle>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-4">
                 <Toggle size="sm">Small</Toggle>
                 <Toggle size="lg">Large</Toggle>
                 <Toggle disabled>Disabled</Toggle>
@@ -303,7 +272,7 @@ export default function EightBitShadcnShowcase() {
       {/* Navigation Components */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tight">Navigation Components</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Breadcrumb */}
           <Card>
             <CardHeader>
@@ -345,7 +314,9 @@ export default function EightBitShadcnShowcase() {
                     <PaginationLink href="#">1</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#" isActive>2</PaginationLink>
+                    <PaginationLink href="#" isActive>
+                      2
+                    </PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
                     <PaginationLink href="#">3</PaginationLink>
@@ -362,7 +333,7 @@ export default function EightBitShadcnShowcase() {
           </Card>
 
           {/* Tabs */}
-          <Card>
+          <Card className="col-span-1 md:col-span-2">
             <CardHeader>
               <CardTitle>Tabs</CardTitle>
               <CardDescription>8-bit styled way to switch between different content views.</CardDescription>
@@ -373,7 +344,9 @@ export default function EightBitShadcnShowcase() {
                   <TabsTrigger value="account">Account</TabsTrigger>
                   <TabsTrigger value="password">Password</TabsTrigger>
                   <TabsTrigger value="settings">Settings</TabsTrigger>
-                  <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+                  <TabsTrigger value="disabled" disabled>
+                    Disabled
+                  </TabsTrigger>
                 </TabsList>
                 <TabsContent value="account" className="p-4">
                   Account settings and preferences.
@@ -389,7 +362,7 @@ export default function EightBitShadcnShowcase() {
           </Card>
 
           {/* Sidebar Block */}
-          <Card>
+          {/* <Card>
             <CardHeader>
               <CardTitle>Sidebar Block</CardTitle>
               <CardDescription>8-bit styled pre-built sidebar navigation.</CardDescription>
@@ -397,7 +370,7 @@ export default function EightBitShadcnShowcase() {
             <CardContent className="h-80 overflow-hidden relative border-4 border-foreground dark:border-ring">
               <AppSidebar />
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </section>
 
@@ -406,7 +379,7 @@ export default function EightBitShadcnShowcase() {
       {/* Feedback Components */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tight">Feedback Components</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Alert */}
           <Card>
             <CardHeader>
@@ -418,7 +391,7 @@ export default function EightBitShadcnShowcase() {
                 <AlertTitle>Information</AlertTitle>
                 <AlertDescription>This is a standard informational alert.</AlertDescription>
               </Alert>
-              
+
               <Alert variant="destructive">
                 <AlertTitle>Error</AlertTitle>
                 <AlertDescription>This is a destructive alert for errors.</AlertDescription>
@@ -445,7 +418,7 @@ export default function EightBitShadcnShowcase() {
           </Card>
 
           {/* Progress */}
-          <Card>
+          <Card className="col-span-1 md:col-span-2">
             <CardHeader>
               <CardTitle>Progress</CardTitle>
               <CardDescription>8-bit styled progress indicator.</CardDescription>
@@ -473,7 +446,7 @@ export default function EightBitShadcnShowcase() {
       {/* Layout Components */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tight">Layout Components</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Accordion */}
           <Card>
             <CardHeader>
@@ -484,15 +457,11 @@ export default function EightBitShadcnShowcase() {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
+                  <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger>Is it styled?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It comes with an 8-bit style that matches other components.
-                  </AccordionContent>
+                  <AccordionContent>Yes. It comes with an 8-bit style that matches other components.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger>Is it animated?</AccordionTrigger>
@@ -504,8 +473,28 @@ export default function EightBitShadcnShowcase() {
             </CardContent>
           </Card>
 
-          {/* Table */}
+          {/* Scroll Area */}
           <Card>
+            <CardHeader>
+              <CardTitle>Scroll Area</CardTitle>
+              <CardDescription>8-bit styled custom scrollbar component.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ScrollArea className="border-foreground dark:border-ring h-[200px] w-full rounded border-4 p-4">
+                <div className="p-4">
+                  <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
+                  {Array.from({ length: 20 }).map((_, i) => (
+                    <div key={i} className="mt-2 text-sm">
+                      Tag {i + 1}
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+
+          {/* Table */}
+          <Card className="col-span-1 md:col-span-2">
             <CardHeader>
               <CardTitle>Table</CardTitle>
               <CardDescription>8-bit styled data table component.</CardDescription>
@@ -540,13 +529,16 @@ export default function EightBitShadcnShowcase() {
           </Card>
 
           {/* Resizable */}
-          <Card>
+          <Card className="col-span-1 md:col-span-2">
             <CardHeader>
               <CardTitle>Resizable</CardTitle>
               <CardDescription>8-bit styled resizable panel component.</CardDescription>
             </CardHeader>
             <CardContent>
-              <ResizablePanelGroup direction="horizontal" className="h-[200px] border-4 border-foreground dark:border-ring">
+              <ResizablePanelGroup
+                direction="horizontal"
+                className="border-foreground dark:border-ring h-[200px] border-4"
+              >
                 <ResizablePanel defaultSize={50}>
                   <div className="flex h-full items-center justify-center p-4">
                     <span className="font-semibold">Panel One</span>
@@ -561,26 +553,6 @@ export default function EightBitShadcnShowcase() {
               </ResizablePanelGroup>
             </CardContent>
           </Card>
-
-          {/* Scroll Area */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Scroll Area</CardTitle>
-              <CardDescription>8-bit styled custom scrollbar component.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ScrollArea className="h-[200px] w-full rounded border-4 border-foreground dark:border-ring p-4">
-                <div className="p-4">
-                  <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
-                  {Array.from({ length: 20 }).map((_, i) => (
-                    <div key={i} className="text-sm mt-2">
-                      Tag {i + 1}
-                    </div>
-                  ))}
-                </div>
-              </ScrollArea>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
@@ -589,7 +561,7 @@ export default function EightBitShadcnShowcase() {
       {/* Overlay Components */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tight">Overlay Components</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Dialog */}
           <Card>
             <CardHeader>
@@ -598,7 +570,7 @@ export default function EightBitShadcnShowcase() {
             </CardHeader>
             <CardContent>
               <Dialog>
-                <DialogTrigger>
+                <DialogTrigger asChild>
                   <Button variant="outline">Open Dialog</Button>
                 </DialogTrigger>
                 <DialogContent>
@@ -672,14 +644,10 @@ export default function EightBitShadcnShowcase() {
                     </Avatar>
                     <div className="space-y-1">
                       <h4 className="text-sm font-semibold">@nextjs</h4>
-                      <p className="text-sm">
-                        The React Framework – created and maintained by @vercel.
-                      </p>
+                      <p className="text-sm">The React Framework – created and maintained by @vercel.</p>
                       <div className="flex items-center pt-2">
                         <GithubIcon className="mr-2 h-4 w-4 opacity-70" />{" "}
-                        <span className="text-xs text-muted-foreground">
-                          Joined December 2021
-                        </span>
+                        <span className="text-muted-foreground text-xs">Joined December 2021</span>
                       </div>
                     </div>
                   </div>
@@ -702,27 +670,17 @@ export default function EightBitShadcnShowcase() {
                 <PopoverContent className="w-80">
                   <div className="grid gap-4">
                     <div className="space-y-2">
-                      <h4 className="font-medium leading-none">Dimensions</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Set the dimensions for the layer.
-                      </p>
+                      <h4 className="leading-none font-medium">Dimensions</h4>
+                      <p className="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
                     </div>
-                    <div className="grid gap-2">
+                    <div className="grid gap-4">
                       <div className="grid grid-cols-3 items-center gap-4">
                         <Label htmlFor="width">Width</Label>
-                        <Input
-                          id="width"
-                          defaultValue="100%"
-                          className="col-span-2 h-8"
-                        />
+                        <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
                       </div>
                       <div className="grid grid-cols-3 items-center gap-4">
                         <Label htmlFor="maxWidth">Max. width</Label>
-                        <Input
-                          id="maxWidth"
-                          defaultValue="300px"
-                          className="col-span-2 h-8"
-                        />
+                        <Input id="maxWidth" defaultValue="300px" className="col-span-2 h-8" />
                       </div>
                     </div>
                   </div>
@@ -745,9 +703,7 @@ export default function EightBitShadcnShowcase() {
                 <SheetContent>
                   <SheetHeader>
                     <SheetTitle>Edit profile</SheetTitle>
-                    <SheetDescription>
-                      Make changes to your profile here. Click save when you're done.
-                    </SheetDescription>
+                    <SheetDescription>Make changes to your profile here. Click save when you're done.</SheetDescription>
                   </SheetHeader>
                   <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -763,7 +719,7 @@ export default function EightBitShadcnShowcase() {
                       <Input id="sheet-username" className="col-span-3" />
                     </div>
                   </div>
-                  <div className="flex flex-col space-y-4 mt-4">
+                  <div className="mt-4 flex flex-col space-y-4">
                     <Button>Save changes</Button>
                     <Button variant="outline">Cancel</Button>
                   </div>
@@ -799,7 +755,7 @@ export default function EightBitShadcnShowcase() {
       {/* Data Display Components */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold tracking-tight">Data Display Components</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {/* Avatar */}
           <Card>
             <CardHeader>
@@ -827,7 +783,7 @@ export default function EightBitShadcnShowcase() {
               <CardTitle>Badge</CardTitle>
               <CardDescription>8-bit styled small status descriptor for UI elements.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-2">
+            <CardContent className="flex flex-wrap gap-4">
               <Badge>Default</Badge>
               <Badge variant="secondary">Secondary</Badge>
               <Badge variant="outline">Outline</Badge>
@@ -857,85 +813,5 @@ export default function EightBitShadcnShowcase() {
         </div>
       </section>
     </div>
-  )
-}
-
-// Following functions aren't part of the main showcase but would be required for the Card component
-function Card({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn(
-        "relative rounded-none border-4 border-foreground dark:border-ring bg-card text-card-foreground shadow-sm",
-        className
-      )}
-      {...props}
-    >
-      {/* 8-bit borders */}
-      <div className="absolute top-0 left-0 size-4 bg-foreground dark:bg-ring" />
-      <div className="absolute top-0 right-0 size-4 bg-foreground dark:bg-ring" />
-      <div className="absolute bottom-0 left-0 size-4 bg-foreground dark:bg-ring" />
-      <div className="absolute bottom-0 right-0 size-4 bg-foreground dark:bg-ring" />
-    </div>
-  )
-}
-
-function CardHeader({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
-      {...props}
-    />
-  )
-}
-
-function CardTitle({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLHeadingElement>) {
-  return (
-    <h3
-      className={cn(
-        "text-lg font-semibold leading-none tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function CardDescription({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
-  return (
-    <p
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
-  )
-}
-
-function CardContent({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("p-6 pt-0", className)} {...props} />
-}
-
-function CardFooter({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("flex items-center p-6 pt-0", className)}
-      {...props}
-    />
   )
 }

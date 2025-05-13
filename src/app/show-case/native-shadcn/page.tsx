@@ -1,12 +1,36 @@
 "use client"
 
 import * as React from "react"
+
 import Link from "next/link"
-import { BellIcon, CheckIcon, ChevronsUpDown, Crown, GithubIcon, Mail, Plus } from "lucide-react"
+
+import { GithubIcon, Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -26,11 +50,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -42,74 +62,18 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Switch } from "@/components/ui/switch"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { Toggle } from "@/components/ui/toggle"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function NativeShadcnShowcase() {
   return (
@@ -121,9 +85,7 @@ export default function NativeShadcnShowcase() {
         </p>
         <div className="flex flex-row gap-2">
           <Button asChild variant="outline">
-            <Link href="/show-case/8bit-shadcn">
-              Switch to 8-bit Theme Components
-            </Link>
+            <Link href="/show-case/8bit-shadcn">Switch to 8-bit Theme Components</Link>
           </Button>
         </div>
       </div>
@@ -150,7 +112,9 @@ export default function NativeShadcnShowcase() {
               <Button size="sm">Small</Button>
               <Button size="lg">Large</Button>
               <Button disabled>Disabled</Button>
-              <Button size="icon"><Plus className="h-4 w-4" /></Button>
+              <Button size="icon">
+                <Plus className="h-4 w-4" />
+              </Button>
             </CardContent>
           </Card>
 
@@ -187,7 +151,9 @@ export default function NativeShadcnShowcase() {
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox id="terms3" disabled />
-                <Label htmlFor="terms3" className="text-muted-foreground">Disabled</Label>
+                <Label htmlFor="terms3" className="text-muted-foreground">
+                  Disabled
+                </Label>
               </div>
             </CardContent>
           </Card>
@@ -210,7 +176,9 @@ export default function NativeShadcnShowcase() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option-three" id="option-three" disabled />
-                  <Label htmlFor="option-three" className="text-muted-foreground">Disabled</Label>
+                  <Label htmlFor="option-three" className="text-muted-foreground">
+                    Disabled
+                  </Label>
                 </div>
               </RadioGroup>
             </CardContent>
@@ -274,7 +242,9 @@ export default function NativeShadcnShowcase() {
               </div>
               <div className="flex items-center space-x-2">
                 <Switch id="disabled" disabled />
-                <Label htmlFor="disabled" className="text-muted-foreground">Disabled</Label>
+                <Label htmlFor="disabled" className="text-muted-foreground">
+                  Disabled
+                </Label>
               </div>
             </CardContent>
           </Card>
@@ -348,7 +318,9 @@ export default function NativeShadcnShowcase() {
                     <PaginationLink href="#">1</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#" isActive>2</PaginationLink>
+                    <PaginationLink href="#" isActive>
+                      2
+                    </PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
                     <PaginationLink href="#">3</PaginationLink>
@@ -376,7 +348,9 @@ export default function NativeShadcnShowcase() {
                   <TabsTrigger value="account">Account</TabsTrigger>
                   <TabsTrigger value="password">Password</TabsTrigger>
                   <TabsTrigger value="settings">Settings</TabsTrigger>
-                  <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+                  <TabsTrigger value="disabled" disabled>
+                    Disabled
+                  </TabsTrigger>
                 </TabsList>
                 <TabsContent value="account" className="p-4">
                   Account settings and preferences.
@@ -410,7 +384,7 @@ export default function NativeShadcnShowcase() {
                 <AlertTitle>Information</AlertTitle>
                 <AlertDescription>This is a standard informational alert.</AlertDescription>
               </Alert>
-              
+
               <Alert variant="destructive">
                 <AlertTitle>Error</AlertTitle>
                 <AlertDescription>This is a destructive alert for errors.</AlertDescription>
@@ -433,8 +407,8 @@ export default function NativeShadcnShowcase() {
                   <AlertDialogHeader>
                     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete your account
-                      and remove your data from our servers.
+                      This action cannot be undone. This will permanently delete your account and remove your data from
+                      our servers.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
@@ -482,9 +456,7 @@ export default function NativeShadcnShowcase() {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
+                  <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
                   <AccordionTrigger>Is it styled?</AccordionTrigger>
@@ -655,14 +627,10 @@ export default function NativeShadcnShowcase() {
                     </Avatar>
                     <div className="space-y-1">
                       <h4 className="text-sm font-semibold">@nextjs</h4>
-                      <p className="text-sm">
-                        The React Framework – created and maintained by @vercel.
-                      </p>
+                      <p className="text-sm">The React Framework – created and maintained by @vercel.</p>
                       <div className="flex items-center pt-2">
                         <GithubIcon className="mr-2 h-4 w-4 opacity-70" />{" "}
-                        <span className="text-xs text-muted-foreground">
-                          Joined December 2021
-                        </span>
+                        <span className="text-xs text-muted-foreground">Joined December 2021</span>
                       </div>
                     </div>
                   </div>
@@ -686,34 +654,20 @@ export default function NativeShadcnShowcase() {
                   <div className="grid gap-4">
                     <div className="space-y-2">
                       <h4 className="font-medium leading-none">Dimensions</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Set the dimensions for the layer.
-                      </p>
+                      <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
                     </div>
                     <div className="grid gap-2">
                       <div className="grid grid-cols-3 items-center gap-4">
                         <Label htmlFor="width">Width</Label>
-                        <Input
-                          id="width"
-                          defaultValue="100%"
-                          className="col-span-2 h-8"
-                        />
+                        <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
                       </div>
                       <div className="grid grid-cols-3 items-center gap-4">
                         <Label htmlFor="maxWidth">Max. width</Label>
-                        <Input
-                          id="maxWidth"
-                          defaultValue="300px"
-                          className="col-span-2 h-8"
-                        />
+                        <Input id="maxWidth" defaultValue="300px" className="col-span-2 h-8" />
                       </div>
                       <div className="grid grid-cols-3 items-center gap-4">
                         <Label htmlFor="height">Height</Label>
-                        <Input
-                          id="height"
-                          defaultValue="25px"
-                          className="col-span-2 h-8"
-                        />
+                        <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
                       </div>
                     </div>
                   </div>
@@ -736,9 +690,7 @@ export default function NativeShadcnShowcase() {
                 <SheetContent>
                   <SheetHeader>
                     <SheetTitle>Edit profile</SheetTitle>
-                    <SheetDescription>
-                      Make changes to your profile here. Click save when you're done.
-                    </SheetDescription>
+                    <SheetDescription>Make changes to your profile here. Click save when you're done.</SheetDescription>
                   </SheetHeader>
                   <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -852,75 +804,26 @@ export default function NativeShadcnShowcase() {
 }
 
 // Following function isn't part of the main showcase but would be required for the Card component
-function Card({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
-        className
-      )}
-      {...props}
-    />
-  )
+function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)} {...props} />
 }
 
-function CardHeader({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
-      {...props}
-    />
-  )
+function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
 }
 
-function CardTitle({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLHeadingElement>) {
-  return (
-    <h3
-      className={cn(
-        "text-lg font-semibold leading-none tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  )
+function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+  return <h3 className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...props} />
 }
 
-function CardDescription({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
-  return (
-    <p
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
-  )
+function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
+  return <p className={cn("text-sm text-muted-foreground", className)} {...props} />
 }
 
-function CardContent({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("p-6 pt-0", className)} {...props} />
 }
 
-function CardFooter({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("flex items-center p-6 pt-0", className)}
-      {...props}
-    />
-  )
+function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("flex items-center p-6 pt-0", className)} {...props} />
 }

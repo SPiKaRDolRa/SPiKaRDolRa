@@ -1,10 +1,13 @@
 "use client"
 
 import * as React from "react"
+
 import { Press_Start_2P } from "next/font/google"
-import { cva, VariantProps } from "class-variance-authority"
+
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+
 import {
   Table as ShadcnTable,
   TableBody as ShadcnTableBody,
@@ -48,12 +51,7 @@ function Table({
   variant?: VariantProps<typeof tableVariants>["variant"]
 }) {
   return (
-    <div
-      className={cn(
-        "relative flex justify-center w-fit",
-        tableVariants({ font, variant })
-      )}
-    >
+    <div className={cn("relative flex justify-center w-full", tableVariants({ font, variant }))}>
       <ShadcnTable className={className} {...props} />
 
       {variant !== "borderless" && (
@@ -67,12 +65,7 @@ function Table({
 }
 
 function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
-  return (
-    <ShadcnTableHeader
-      className={cn(className, "border-b-4 border-foreground dark:border-ring")}
-      {...props}
-    />
-  )
+  return <ShadcnTableHeader className={cn(className, "border-b-4 border-foreground dark:border-ring")} {...props} />
 }
 
 function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
@@ -86,10 +79,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
 function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   return (
     <ShadcnTableRow
-      className={cn(
-        className,
-        "border-dashed border-b-4 border-foreground dark:border-ring"
-      )}
+      className={cn(className, "border-dashed border-b-4 border-foreground dark:border-ring")}
       {...props}
     />
   )
@@ -103,20 +93,8 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   return <ShadcnTableCell className={cn(className)} {...props} />
 }
 
-function TableCaption({
-  className,
-  ...props
-}: React.ComponentProps<"caption">) {
+function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
   return <ShadcnTableCaption className={cn(className)} {...props} />
 }
 
-export {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-}
+export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow }
